@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deep Online Service Center</title>
+<style>
+  body { 
+    font-family: Arial, sans-serif; 
+    margin: 0; 
+    padding: 0; 
+    background-color: #e6f7ff; /* હળવો સ્કાય બ્લુ બેકગ્રાઉન્ડ */
+    color: #00334e;
+    padding-bottom: 40px;
+  }
+  header { 
+    background-color: #87cefa; /* લાઇટ સ્કાય બ્લુ હેડર */
+    color: #002b49; 
+    padding: 35px 20px; 
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+  header h1 { 
+    font-size: 36px; 
+    margin: 0; 
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  header .tagline { 
+    font-size: 22px; 
+    margin-top: 8px; 
+    margin-bottom: 18px;
+    font-weight: bold;
+    color: #004d7a;
+  }
+  .contact-box {
+    background-color: rgba(255, 255, 255, 0.85);
+    display: inline-block;
+    padding: 15px 25px;
+    border-radius: 10px;
+    border: 1px solid #5bc0de;
+    max-width: 90%;
+  }
+  .contact-box p {
+    margin: 6px 0;
+    font-size: 17px;
+    color: #002b49;
+    font-weight: bold;
+  }
+  .qr-section {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px dashed #5bc0de;
+  }
+  .qr-section img {
+    width: 140px;
+    height: 140px;
+    border: 4px solid #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    background: #fff;
+  }
+  .qr-section p {
+    font-size: 14px;
+    margin: 8px 0 12px 0;
+    color: #004d7a;
+  }
+  .btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .whatsapp-btn {
+    display: inline-block;
+    background-color: #25D366;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 9px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  .whatsapp-btn:hover {
+    background-color: #1ebe5d;
+  }
+  .map-btn {
+    display: inline-block;
+    background-color: #0077b6;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 9px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  .map-btn:hover {
+    background-color: #005f87;
+  }
+  .review-btn {
+    display: inline-block;
+    background-color: #f59e0b; /* રિવ્યુ માટે આકર્ષક ગોલ્ડન-ઓરેન્જ રંગ */
+    color: #ffffff;
+    text-decoration: none;
+    padding: 9px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  .review-btn:hover {
+    background-color: #d97706;
+  }
+  .container { 
+    max-width: 700px; 
+    margin: 25px auto; 
+    padding: 0 15px; 
+  }
+  .image-gallery {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+  }
+  .image-card {
+    flex: 1;
+    min-width: 190px;
+    background: white;
+    padding: 8px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 119, 182, 0.12);
+    text-align: center;
+  }
+  .image-card img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 6px;
+  }
+  .image-card span {
+    display: block;
+    margin-top: 6px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #005f87;
+  }
+  .services-list, .docs-box { 
+    background: #ffffff; 
+    border-radius: 10px; 
+    padding: 25px 30px; 
+    box-shadow: 0 4px 10px rgba(0, 119, 182, 0.1); 
+    border-top: 5px solid #5bc0de;
+    margin-bottom: 25px;
+  }
+  .services-list h2, .docs-box h2 { 
+    text-align: center; 
+    color: #005f87; 
+    margin-top: 0;
+    border-bottom: 2px solid #b3e5fc;
+    padding-bottom: 12px;
+  }
+  .services-list ul { 
+    list-style-type: none; 
+    padding: 0; 
+    margin: 0;
+  }
+  .services-list li { 
+    padding: 12px 15px; 
+    border-bottom: 1px solid #e1f5fe; 
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+  }
+  .services-list li:last-child { 
+    border-bottom: none; 
+  }
+  .services-list li::before {
+    content: "✔️";
+    color: #0088cc;
+    font-weight: bold;
+    margin-right: 12px;
+  }
+  .doc-group {
+    margin-top: 18px;
+  }
+  .doc-group h3 {
+    color: #004d7a;
+    font-size: 19px;
+    margin-bottom: 10px;
+    border-left: 4px solid #0088cc;
+    padding-left: 10px;
+  }
+  .doc-group ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  .doc-group li {
+    padding: 8px 12px;
+    border-bottom: 1px solid #eef9ff;
+    font-size: 16px;
+  }
+  .doc-group li:last-child {
+    border-bottom: none;
+  }
+  .doc-note {
+    font-size: 14px;
+    color: #006699;
+    font-style: italic;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>DEEP ONLINE SERVICE CENTER</h1>
+  <p class="tagline">Welcome To Digital World</p>
+  
+  <div class="contact-box">
+    <p>📍 સરનામું: આછવણી, રજપૂત ફળિયા, રામેશ્વર મંદિર પાસે</p>
+    <p>📞 સંપર્ક: 90239 94413</p>
+
+    <!-- WhatsApp QR કોડ, WhatsApp બટન, મેપ અને રિવ્યુ લિંક -->
+    <div class="qr-section">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https%3A%2F%2Fwa.me%2F919023994413%3Ftext%3D%25E0%25A4%25A8%25E0%25A4%25AE%25E0%25A4%25B8%25E0%25A5%258D%25E0%25A4%25A4%25E0%25A5%2587%21%2520Welcome%2520To%2520Digital%2520World%2520-%2520Deep%2520Online%2520Service%2520Center.%2520%25E0%25A4%25AE%25E0%25A5%2581%25E0%25A4%259D%25E0%25A5%2587%2520%25E0%25A4%2586%25E0%25A4%25AA%25E0%25A4%2595%25E0%25A5%2580%2520%25E0%25A4%25B8%25E0%25A5%2587%25E0%25A4%25B5%25E0%25A4%25BE%25E0%25A4%2593%25E0%25A4%2582%2520%25E0%25A4%2595%25E0%25A5%2587%2520%25E0%25A4%25AC%25E0%25A4%25BE%25E0%25A4%25B0%25E0%25A5%2587%2520%25E0%25A4%25AE%25E0%25A5%2587%25E0%25A4%2582%2520%25E0%25A4%259C%25E0%25A4%25BE%25E0%25A4%25A8%25E0%25A4%2595%25E0%25A4%25BE%25E0%25A4%25B0%25E0%25A5%2580%2520%25E0%25A4%259A%25E0%25A4%25BE%25E0%25A4%25B9%25E0%25A4%25BF%25E0%25A4%258F%2521" alt="WhatsApp Direct QR Code">
+      <p>સીધા WhatsApp પર જોડાવા માટે QR કોડ સ્કેન કરો અથવા નીચે ક્લિક કરો</p>
+      
+      <div class="btn-group">
+        <a href="https://wa.me/919023994413?text=%E0%A4%A8%E0%A4%AE%E0%A4%B8%E0%A5%8D%E0%A4%A4%E0%A5%87%21%20Welcome%20To%20Digital%20World%20-%20Deep%20Online%20Service%20Center.%20%E0%A4%AE%E0%A5%81%E0%A4%9D%E0%A5%87%20%E0%A4%86%E0%A4%AA%E0%A4%95%E0%A5%80%20%E0%A4%B8%E0%A5%87%E0%A4%B5%E0%A4%BE%E0%A4%93%E0%A4%82%20%E0%A4%95%E0%A5%87%20%E0%A4%AC%E0%A4%BE%E0%A4%B0%E0%A5%87%20%E0%A4%AE%E0%A5%87%E0%A4%82%20%E0%A4%9C%E0%A4%BE%E0%A4%A8%E0%A4%95%E0%A4%BE%E0%A4%B0%E0%A5%80%20%E0%A4%9A%E0%A4%BE%E0%A4%B9%E0%A4%BF%E0%A4%8F%21" target="_blank" class="whatsapp-btn">💬 Click Here to WhatsApp</a>
+        <a href="https://maps.app.goo.gl/fvoBV3dWATNeAWRr9" target="_blank" class="map-btn">🗺️ લોકેશન જુઓ</a>
+        <a href="https://maps.app.goo.gl/fvoBV3dWATNeAWRr9" target="_blank" class="review-btn">⭐ Google પર રિવ્યુ આપો</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  
+  <!-- કમ્પ્યુટર, લેપટોપ અને પ્રિન્ટરના ફોટા -->
+  <div class="image-gallery">
+    <div class="image-card">
+      <img src="https://images.unsplash.com/photo-1587831990711-23ca6441447b?auto=format&fit=crop&w=400&q=80" alt="Computer">
+      <span>કમ્પ્યુટર સેવા</span>
+    </div>
+    <div class="image-card">
+      <img src="
