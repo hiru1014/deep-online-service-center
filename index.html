@@ -165,7 +165,7 @@
     font-size: 14px;
     color: #005f87;
   }
-  .services-list, .docs-box, .insta-box { 
+  .services-list, .docs-box, .insta-box, .footer-connect { 
     background: #ffffff; 
     border-radius: 10px; 
     padding: 25px 30px; 
@@ -176,6 +176,55 @@
   .insta-box {
     border-top: 5px solid #e1306c;
     text-align: center;
+  }
+  .footer-connect {
+    border-top: 5px solid #0077b6;
+    text-align: center;
+    margin-bottom: 0;
+  }
+  .footer-connect h2 {
+    color: #004d7a;
+    margin-top: 0;
+    margin-bottom: 14px;
+    font-size: 20px;
+  }
+  .bottom-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+  .personal-insta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+  }
+  .personal-insta-btn:hover {
+    opacity: 0.92;
+  }
+  .call-now-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #0284c7;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+  }
+  .call-now-btn:hover {
+    background-color: #0369a1;
   }
   .services-list h2, .docs-box h2, .insta-box h2 { 
     text-align: center; 
@@ -276,7 +325,7 @@
     border-bottom: none; 
   }
   .services-list li::before {
-    content: "✔";
+    content: "✔️";
     color: #0088cc;
     font-weight: bold;
     margin-right: 4px;
@@ -315,11 +364,6 @@
   }
   .doc-group li:last-child {
     border-bottom: none;
-  }
-  .doc-note {
-    font-size: 14px;
-    color: #006699;
-    font-style: italic;
   }
 </style>
 </head>
@@ -404,9 +448,9 @@
       <a href="https://www.instagram.com/hrphotoframe?jplx=MXhneWFrdXF1NHQyYQ==" target="_blank" class="frame-card">
         <div class="frame-mock">
           <div style="font-size: 30px;">👨‍👩‍👧‍👦🖼️</div>
-          <div style="font-size: 13px; color: #1e293b; font-weight: bold; margin-top: 6px;">Family & Collage</div>
+          <div style="font-size: 13px; color: #1e293b; font-weight: bold; margin-top: 6px;">Family Frame</div>
         </div>
-        <span>કસ્ટમ કોલાજ ફ્રેમ</span>
+        <span>કસ્ટમ ફેમિલી ફ્રેમ</span>
       </a>
     </div>
   </div>
@@ -415,7 +459,7 @@
     <h2>અમારી સેવાઓ (Our Services)</h2>
     <ul>
       <li>આધાર કાર્ડથી પૈસા ઉપાડવા (AEPS)</li>
-      <li>ગુજરાત ગ્રામ્ય બેંક ખાતું ખોલવું</li>
+      <li>ગુજરાત ગ્રામીણ બેંક</li>
       <li>લાઈટ બિલ અને ગેસ બિલ ભરવું</li>
       <li>૭/૧૨ અને ૮-અ ની નકલ</li>
       <li>
@@ -428,7 +472,7 @@
             <rect x="20" y="18" width="12" height="2" rx="1" fill="#64748b"/>
           </svg>
         </span>
-        <span>પાન કાર્ડ અને આધાર કાર્ડ ને લગતા કામ</span>
+        <span>પાન કાર્ડના કામ અને આધાર કાર્ડ પ્રિન્ટ</span>
       </li>
       <li>
         <span class="service-logo" aria-hidden="true">
@@ -442,6 +486,8 @@
       </li>
       <li>NOC (એનઓસી) કરી આપવામાં આવશે</li>
       <li>તમામ પ્રકારના ઓનલાઈન ફોર્મ ભરવા</li>
+      <li>સ્કોલરશિપના ફોર્મ</li>
+      <li>ઈ-શ્રમ કાર્ડ બનાવી આપવામાં આવશે</li>
       <li>બાયોડેટા (Biodata) બનાવવો</li>
       <li>
         <span class="service-logo" aria-hidden="true">
@@ -465,6 +511,7 @@
         </span>
         <span>પાસપોર્ટ સાઇઝ ફોટો અને લેમિનેશન</span>
       </li>
+      <li>મોબાઈલ રિચાર્જ</li>
     </ul>
   </div>
 
@@ -504,7 +551,6 @@
         <li>• બેંક પાસબુક</li>
         <li>• UAN નંબર</li>
         <li>• આધાર કાર્ડ અને બેંક પાસબુક સાથે લિંક મોબાઈલ નંબર (મોબાઈલ સાથે લાવવો જરૂરી છે)</li>
-        <li>• પાસપોર્ટ <span class="doc-note">(હોય તો ચાલશે, ન હોય તો પણ ચાલશે)</span></li>
       </ul>
     </div>
 
@@ -526,6 +572,27 @@
         <li>• મોબાઈલ નંબર</li>
         <li>• નીચેનામાંથી <strong>કોઈ પણ એક</strong> દસ્તાવેજ: LC (લિવિંગ સર્ટિફિકેટ), જન્મનો દાખલો (Birth Certificate) અથવા ઈ-શ્રમ કાર્ડ</li>
       </ul>
+    </div>
+  </div>
+
+  <div class="footer-connect">
+    <h2>સીધો સંપર્ક અને Instagram</h2>
+    <div class="bottom-actions">
+      <a href="https://www.instagram.com/hiru_._1014?gwpx=aWFtYWt6OXptMDhn" target="_blank" class="personal-insta-btn">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+        </svg>
+        <span>@hiru_._1014</span>
+      </a>
+
+      <a href="tel:919023994413" class="call-now-btn">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+        </svg>
+        <span>Call Now (કોલ કરો)</span>
+      </a>
     </div>
   </div>
 
