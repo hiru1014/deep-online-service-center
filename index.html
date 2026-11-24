@@ -632,3 +632,435 @@
     <p>🕒 સમય: સોમવારથી શનિવાર — સવારે 8:30 થી સાંજે 8:00</p>
 
     <div class="qr-section">
+      <p>QR કોડ સ્કેન કરો અથવા નીચે ક્લિક કરો</p>
+
+      <div class="qr-grid">
+        <div class="qr-card">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https%3A%2F%2Fwa.me%2F919023994413%3Ftext%3DThank%2520you%2520for%2520visit" alt="WhatsApp QR Code">
+          <p class="qr-label">💬 આ WhatsApp માટે છે</p>
+        </div>
+
+        <div class="qr-card">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https%3A%2F%2Fmaps.app.goo.gl%2FfvoBV3dWATNeAWRr9" alt="Location QR Code">
+          <p class="qr-label">🗺️ આ લોકેશન માટે છે</p>
+        </div>
+      </div>
+      
+      <div class="btn-group">
+        <a href="https://wa.me/919023994413?text=Thank%20you%20for%20visit" target="_blank" class="whatsapp-btn">💬 Click Here to WhatsApp</a>
+        <a href="https://maps.app.goo.gl/fvoBV3dWATNeAWRr9" target="_blank" class="map-btn">🗺️ લોકેશન જુઓ</a>
+        <a href="https://maps.app.goo.gl/fvoBV3dWATNeAWRr9" target="_blank" class="review-btn">⭐ Google પર રિવ્યુ આપો</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  
+  <div class="image-gallery">
+    <div class="image-card">
+      <img src="https://images.unsplash.com/photo-1587831990711-23ca6441447b?auto=format&fit=crop&w=400&q=80" alt="Computer">
+      <span>કમ્પ્યુટર સેવા</span>
+    </div>
+    <div class="image-card">
+      <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=400&q=80" alt="Laptop">
+      <span>ડિજિટલ વર્ક</span>
+    </div>
+    <div class="image-card">
+      <img src="https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?auto=format&fit=crop&w=400&q=80" alt="Printer">
+      <span>પ્રિન્ટિંગ અને ઝેરોક્ષ</span>
+    </div>
+  </div>
+
+  <div class="age-box">
+    <h2>🎂 જન્મતારીખ પરથી ઉંમર જાણો</h2>
+    <div class="age-form">
+      <input type="date" id="dob-input" aria-label="જન્મતારીખ">
+      <button type="button" class="age-calc-btn" onclick="calculateAge()">ઉંમર જુઓ</button>
+    </div>
+    <div id="age-result" class="age-result"></div>
+  </div>
+  <div class="doc-check-box">
+    <h2>✅ Document Check (તમારા કામના દસ્તાવેજો તપાસો)</h2>
+    <div class="doc-check-options">
+      <label class="doc-check-item" for="chk-pf">
+        <input type="checkbox" id="chk-pf" onchange="toggleDocPanel('panel-pf', this.checked)">
+        <span class="service-logo" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="24" height="24">
+            <circle cx="16" cy="16" r="14.5" fill="#0f4c81"/>
+            <text x="16" y="19" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#ffffff" font-family="Arial, sans-serif">PF</text>
+          </svg>
+        </span>
+        <span>PF</span>
+      </label>
+
+      <label class="doc-check-item" for="chk-ikhedut">
+        <input type="checkbox" id="chk-ikhedut" onchange="toggleDocPanel('panel-ikhedut', this.checked)">
+        <span class="service-logo" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="24" height="24">
+            <circle cx="16" cy="16" r="14.5" fill="#dcfce7" stroke="#15803d" stroke-width="1.6"/>
+            <path d="M16 23V13" stroke="#15803d" stroke-width="2" stroke-linecap="round"/>
+            <path d="M16 15c-3.5 0-6-2.5-6-5.5 3.5 0 6 2.5 6 5.5z" fill="#22c55e" stroke="#15803d" stroke-width="1.2"/>
+            <path d="M16 13c3.5 0 6-2.5 6-5.5-3.5 0-6 2.5-6 5.5z" fill="#16a34a" stroke="#15803d" stroke-width="1.2"/>
+          </svg>
+        </span>
+        <span>i-Khedut</span>
+      </label>
+
+      <label class="doc-check-item" for="chk-bank">
+        <input type="checkbox" id="chk-bank" onchange="toggleDocPanel('panel-bank', this.checked)">
+        <span class="service-logo" aria-hidden="true">
+          <svg viewBox="0 0 28 28" width="24" height="24">
+            <rect x="2" y="5" width="24" height="18" rx="2.5" fill="#ecfeff" stroke="#0284c7" stroke-width="1.6"/>
+            <path d="M2 11h24" stroke="#0284c7" stroke-width="2"/>
+            <rect x="6" y="16" width="8" height="2.5" rx="1" fill="#0369a1"/>
+          </svg>
+        </span>
+        <span>Bank</span>
+      </label>
+    </div>
+
+    <div id="panel-pf" class="doc-check-panel">
+      <h4>
+        <span class="service-logo" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="22" height="22">
+            <circle cx="16" cy="16" r="14.5" fill="#0f4c81"/>
+            <text x="16" y="19" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#ffffff" font-family="Arial, sans-serif">PF</text>
+          </svg>
+        </span>
+        <span>PF (પીએફ) માટે જરૂરી દસ્તાવેજો</span>
+      </h4>
+      <ul>
+        <li>આધાર કાર્ડ</li>
+        <li>બેંક પાસબુક</li>
+        <li>UAN નંબર</li>
+        <li>આધાર કાર્ડ અને બેંક પાસબુક સાથે લિંક મોબાઈલ નંબર (મોબાઈલ સાથે લાવવો જરૂરી છે)</li>
+      </ul>
+    </div>
+
+    <div id="panel-ikhedut" class="doc-check-panel">
+      <h4>
+        <span class="service-logo" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="22" height="22">
+            <circle cx="16" cy="16" r="14.5" fill="#dcfce7" stroke="#15803d" stroke-width="1.6"/>
+            <path d="M16 23V13" stroke="#15803d" stroke-width="2" stroke-linecap="round"/>
+            <path d="M16 15c-3.5 0-6-2.5-6-5.5 3.5 0 6 2.5 6 5.5z" fill="#22c55e" stroke="#15803d" stroke-width="1.2"/>
+            <path d="M16 13c3.5 0 6-2.5 6-5.5-3.5 0-6 2.5-6 5.5z" fill="#16a34a" stroke="#15803d" stroke-width="1.2"/>
+          </svg>
+        </span>
+        <span>i-Khedut (ખેતીવાડી, બાગાયત, પશુપાલન) માટે જરૂરી દસ્તાવેજો</span>
+      </h4>
+      <ul>
+        <li>આધાર કાર્ડ</li>
+        <li>રેશન કાર્ડ</li>
+        <li>બેંક પાસબુક</li>
+        <li>જાતિનો દાખલો</li>
+        <li>૭/૧૨ અને ૮-અ ની નકલ</li>
+        <li>આધાર કાર્ડ સાથે જે મોબાઈલ નંબર લિંક હોય તે મોબાઈલ સાથે લાવવો</li>
+      </ul>
+    </div>
+
+    <div id="panel-bank" class="doc-check-panel">
+      <h4>
+        <span class="service-logo" aria-hidden="true">
+          <svg viewBox="0 0 28 28" width="22" height="22">
+            <rect x="2" y="5" width="24" height="18" rx="2.5" fill="#ecfeff" stroke="#0284c7" stroke-width="1.6"/>
+            <path d="M2 11h24" stroke="#0284c7" stroke-width="2"/>
+            <rect x="6" y="16" width="8" height="2.5" rx="1" fill="#0369a1"/>
+          </svg>
+        </span>
+        <span>ગુજરાત ગ્રામીણ બેંક (Bank) માટે જરૂરી દસ્તાવેજો</span>
+      </h4>
+      <ul>
+        <li>બેંક પાસબુક</li>
+        <li>ખાતું ખોલાવવા માટે: આધાર કાર્ડ, નોમિનીનો આધાર કાર્ડ, પાસપોર્ટ સાઈઝ ફોટો અને આધાર લિંક મોબાઈલ નંબર</li>
+        <li>પાનકાર્ડ હોય તો પાનકાર્ડ અને ત્રણ ફોટા જોશે</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="insta-box">
+    <h2>🖼️ કસ્ટમ ફોટો ફ્રેમ ડિઝાઇન (HR Photo Frame)</h2>
+    <p class="insta-desc">
+      બર્થડે, મેરેજ ગિફ્ટ અને ખાસ યાદો માટે આકર્ષક <strong>ફોટો ફ્રેમ</strong> બનાવવા તથા નવી ડિઝાઇન જોવા માટે અમારા Instagram પેજ પર જોડાઓ:
+    </p>
+    <a href="https://www.instagram.com/hrphotoframe?jplx=MXhneWFrdXF1NHQyYQ==" target="_blank" class="insta-btn">
+      📸 Instagram: @hrphotoframe (ફોટો ફ્રેમ માટે)
+    </a>
+
+    <div class="frame-showcase">
+      <a href="https://www.instagram.com/hrphotoframe?jplx=MXhneWFrdXF1NHQyYQ==" target="_blank" class="frame-card">
+        <div class="frame-mock rose">
+          <div style="font-size: 30px;">🎂🖼️</div>
+          <div style="font-size: 13px; color: #be123c; font-weight: bold; margin-top: 6px;">Happy Birthday</div>
+        </div>
+        <span>બર્થડે ફોટો ફ્રેમ</span>
+      </a>
+
+      <a href="https://www.instagram.com/hrphotoframe?jplx=MXhneWFrdXF1NHQyYQ==" target="_blank" class="frame-card">
+        <div class="frame-mock gold">
+          <div style="font-size: 30px;">💍🖼️</div>
+          <div style="font-size: 13px; color: #b45309; font-weight: bold; margin-top: 6px;">Wedding Gift</div>
+        </div>
+        <span>મેરેજ ગિફ્ટ ફ્રેમ</span>
+      </a>
+
+      <a href="https://www.instagram.com/hrphotoframe?jplx=MXhneWFrdXF1NHQyYQ==" target="_blank" class="frame-card">
+        <div class="frame-mock">
+          <div style="font-size: 30px;">👨‍👩‍👧‍👦🖼️</div>
+          <div style="font-size: 13px; color: #1e293b; font-weight: bold; margin-top: 6px;">Family Frame</div>
+        </div>
+        <span>કસ્ટમ ફેમિલી ફ્રેમ</span>
+      </a>
+    </div>
+  </div>
+  <div class="services-list">
+    <h2>અમારી સેવાઓ (Our Services)</h2>
+    <ul>
+      <li>આધાર કાર્ડથી પૈસા ઉપાડવા (AEPS)</li>
+      <li>ગુજરાત ગ્રામીણ બેંકમાં ખાતું ખોલી આપવામાં આવશે</li>
+      <li>
+        <span class="service-logo" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="26" height="26">
+            <circle cx="16" cy="16" r="14.5" fill="#dcfce7" stroke="#15803d" stroke-width="1.6"/>
+            <path d="M16 23V13" stroke="#15803d" stroke-width="2" stroke-linecap="round"/>
+            <path d="M16 15c-3.5 0-6-2.5-6-5.5 3.5 0 6 2.5 6 5.5z" fill="#22c55e" stroke="#15803d" stroke-width="1.2"/>
+            <path d="M16 13c3.5 0 6-2.5 6-5.5-3.5 0-6 2.5-6 5.5z" fill="#16a34a" stroke="#15803d" stroke-width="1.2"/>
+          </svg>
+        </span>
+        <span><strong>આઈ ખેડૂત (iKhedut) પોર્ટલ પર અરજી:</strong> ખેતીવાડી, બાગાયત અને પશુપાલન યોજનાની અરજી કરી આપવામાં આવશે</span>
+      </li>
+      <li>લાઈટ બિલ અને ગેસ બિલ ભરવું</li>
+      <li>૭/૧૨ અને ૮-અ ની નકલ</li>
+      <li>
+        <span class="service-logo" aria-hidden="true">
+          <svg viewBox="0 0 36 24" width="28" height="20">
+            <rect x="0.5" y="0.5" width="35" height="23" rx="2.5" fill="#e8f1ff" stroke="#1d4ed8" stroke-width="1.2"/>
+            <rect x="3" y="3" width="30" height="4" rx="1" fill="#1d4ed8"/>
+            <text x="18" y="15" text-anchor="middle" font-size="7.5" font-weight="bold" fill="#0f172a" font-family="Arial, sans-serif">PAN</text>
+            <rect x="4" y="18" width="14" height="2" rx="1" fill="#64748b"/>
+            <rect x="20" y="18" width="12" height="2" rx="1" fill="#64748b"/>
+          </svg>
+        </span>
+        <span>પાન કાર્ડના કામ અને આધાર કાર્ડ પ્રિન્ટ</span>
+      </li>
+      <li>
+        <span class="service-logo" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="26" height="26">
+            <circle cx="16" cy="16" r="14.5" fill="#0f4c81" stroke="#082f49" stroke-width="1.5"/>
+            <circle cx="16" cy="16" r="11" fill="none" stroke="#93c5fd" stroke-width="1" stroke-dasharray="2 1.5"/>
+            <text x="16" y="19" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#ffffff" font-family="Arial, sans-serif">PF</text>
+          </svg>
+        </span>
+        <span>PF (પીએફ) ને લગતા તમામ કામ</span>
+      </li>
+      <li>NOC (એનઓસી) કરી આપવામાં આવશે</li>
+      <li>તમામ પ્રકારના ઓનલાઈન ફોર્મ ભરવા</li>
+      <li>સ્કોલરશિપના ફોર્મ</li>
+      <li>ઈ-શ્રમ કાર્ડ બનાવી આપવામાં આવશે</li>
+      <li>બાયોડેટા (Biodata) બનાવવો</li>
+      <li>
+        <span class="service-logo" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="26" height="26">
+            <rect x="3" y="4" width="26" height="24" rx="3" fill="#fff1f2" stroke="#e11d48" stroke-width="2"/>
+            <rect x="7" y="8" width="18" height="16" rx="1.5" fill="#ffe4e6" stroke="#fb7185" stroke-width="1.2"/>
+            <circle cx="16" cy="14" r="3" fill="#e11d48"/>
+            <path d="M11 21c1.2-2.2 3-3 5-3s3.8.8 5 3" fill="none" stroke="#e11d48" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="26" cy="6" r="3.5" fill="#f59e0b"/>
+          </svg>
+        </span>
+        <span>બર્થડે ફ્રેમ અને મેરેજ ગિફ્ટ ફ્રેમ</span>
+      </li>
+      <li>
+        <span class="service-logo" aria-hidden="true">
+          <svg viewBox="0 0 28 32" width="24" height="28">
+            <rect x="2" y="2" width="24" height="28" rx="2" fill="#f8fafc" stroke="#0284c7" stroke-width="2"/>
+            <circle cx="14" cy="12" r="4.5" fill="#38bdf8" stroke="#0369a1" stroke-width="1.2"/>
+            <path d="M6.5 25c1.2-4 4-6 7.5-6s6.3 2 7.5 6" fill="#7dd3fc" stroke="#0369a1" stroke-width="1.2"/>
+          </svg>
+        </span>
+        <span>પાસપોર્ટ સાઇઝ ફોટો અને લેમિનેશન</span>
+      </li>
+      <li>મોબાઈલ રિચાર્જ</li>
+    </ul>
+  </div>
+  <div class="docs-box">
+    <h2>જરૂરી દસ્તાવેજો (Documents Required)</h2>
+
+    <div class="doc-group">
+      <h3>
+        <span class="service-logo" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="24" height="24">
+            <circle cx="16" cy="16" r="14.5" fill="#dcfce7" stroke="#15803d" stroke-width="1.6"/>
+            <path d="M16 23V13" stroke="#15803d" stroke-width="2" stroke-linecap="round"/>
+            <path d="M16 15c-3.5 0-6-2.5-6-5.5 3.5 0 6 2.5 6 5.5z" fill="#22c55e" stroke="#15803d" stroke-width="1.2"/>
+            <path d="M16 13c3.5 0 6-2.5 6-5.5-3.5 0-6 2.5-6 5.5z" fill="#16a34a" stroke="#15803d" stroke-width="1.2"/>
+          </svg>
+        </span>
+        <span>આઈ ખેડૂત પોર્ટલ (ખેતીવાડી, બાગાયત, પશુપાલન) અરજી માટે જરૂરી દસ્તાવેજો</span>
+      </h3>
+      <ul>
+        <li>• આધાર કાર્ડ</li>
+        <li>• રેશન કાર્ડ</li>
+        <li>• બેંક પાસબુક</li>
+        <li>• જાતિનો દાખલો</li>
+        <li>• ૭/૧૨ અને ૮-અ ની નકલ</li>
+        <li>• આધાર કાર્ડ સાથે જે મોબાઈલ નંબર લિંક હોય તે મોબાઈલ સાથે લાવવો</li>
+      </ul>
+    </div>
+
+    <div class="doc-group">
+      <h3>
+        <span class="service-logo" aria-hidden="true">
+          <svg viewBox="0 0 28 28" width="24" height="24">
+            <rect x="2" y="5" width="24" height="18" rx="2.5" fill="#ecfeff" stroke="#0284c7" stroke-width="1.6"/>
+            <path d="M2 11h24" stroke="#0284c7" stroke-width="2"/>
+            <rect x="6" y="16" width="8" height="2.5" rx="1" fill="#0369a1"/>
+          </svg>
+        </span>
+        <span>ગુજરાત ગ્રામીણ બેંકનું ખાતું ખોલવા માટેના દસ્તાવેજો</span>
+      </h3>
+      <ul>
+        <li>• બેંક પાસબુક</li>
+        <li>• <strong>ખાતું ખોલાવવા માટે:</strong> આધાર કાર્ડ, નોમિનીનો આધાર કાર્ડ, પાસપોર્ટ સાઈઝ ફોટો અને આધાર લિંક મોબાઈલ નંબર</li>
+        <li>• પાનકાર્ડ હોય તો પાનકાર્ડ અને <strong>ત્રણ ફોટા</strong> જોશે</li>
+      </ul>
+    </div>
+
+    <div class="doc-group">
+      <h3>
+        <span class="service-logo" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="24" height="24">
+            <circle cx="16" cy="16" r="14.5" fill="#0f4c81"/>
+            <text x="16" y="19" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#ffffff" font-family="Arial, sans-serif">PF</text>
+          </svg>
+        </span>
+        <span>PF (પીએફ) ના કામ માટે જરૂરી દસ્તાવેજો</span>
+      </h3>
+      <ul>
+        <li>• આધાર કાર્ડ</li>
+        <li>• બેંક પાસબુક</li>
+        <li>• UAN નંબર</li>
+        <li>• આધાર કાર્ડ અને બેંક પાસબુક સાથે લિંક મોબાઈલ નંબર (મોબાઈલ સાથે લાવવો જરૂરી છે)</li>
+      </ul>
+    </div>
+
+    <div class="doc-group">
+      <h3>
+        <span class="service-logo" aria-hidden="true">
+          <svg viewBox="0 0 36 24" width="28" height="20">
+            <rect x="0.5" y="0.5" width="35" height="23" rx="2.5" fill="#e8f1ff" stroke="#1d4ed8" stroke-width="1.2"/>
+            <rect x="3" y="3" width="30" height="4" rx="1" fill="#1d4ed8"/>
+            <text x="18" y="15" text-anchor="middle" font-size="7.5" font-weight="bold" fill="#0f172a" font-family="Arial, sans-serif">PAN</text>
+          </svg>
+        </span>
+        <span>પાન કાર્ડ (PAN Card) કઢાવવા માટે જરૂરી દસ્તાવેજો</span>
+      </h3>
+      <ul>
+        <li>• આધાર કાર્ડ</li>
+        <li>• પાસપોર્ટ સાઈઝ ફોટો</li>
+        <li>• સહી (Signature)</li>
+        <li>• મોબાઈલ નંબર</li>
+        <li>• નીચેનામાંથી <strong>કોઈ પણ એક</strong> દસ્તાવેજ: LC (લિવિંગ સર્ટિફિકેટ), જન્મનો દાખલો (Birth Certificate) અથવા ઈ-શ્રમ કાર્ડ</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="wa-group-box">
+    <h2>💬 આછવણી ડિજિટલ સેવા કેન્દ્ર — WhatsApp ગ્રુપ</h2>
+    <div class="wa-group-layout">
+      <div class="wa-group-qr-card">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https%3A%2F%2Fchat.whatsapp.com%2FHLuuxU9iihC80mV8LoGHxi%3Fs%3Dcl%26p%3Da%26iam%3D2" alt="આછવણી ડિજિટલ સેવા કેન્દ્ર WhatsApp Group QR Code">
+        <p>ગ્રુપ QR કોડ</p>
+      </div>
+      <div class="wa-group-info">
+        <p>
+          નવી ભરતી, સરકારી યોજના, ફોર્મ અને સેવાઓની અપડેટ સીધી મેળવવા માટે <strong>આછવણી ડિજિટલ સેવા કેન્દ્ર</strong> WhatsApp ગ્રુપમાં જોડાઓ:
+        </p>
+        <a href="https://chat.whatsapp.com/HLuuxU9iihC80mV8LoGHxi?s=cl&p=a&iam=2" target="_blank" class="wa-group-btn">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+            <path d="M20.52 3.48A11.82 11.82 0 0 0 12.07 0C5.5 0 .16 5.34.16 11.91c0 2.1.55 4.15 1.6 5.96L0 24l6.3-1.65a11.87 11.87 0 0 0 5.77 1.47h.01c6.57 0 11.91-5.34 11.91-11.91 0-3.18-1.24-6.17-3.49-8.43zM12.08 21.8h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.25c0-5.45 4.44-9.89 9.9-9.89 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.9 7c0 5.45-4.44 9.88-9.86 9.88zm5.42-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.21 5.09 4.5.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"/>
+          </svg>
+          <span>આછવણી ડિજિટલ સેવા કેન્દ્ર</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-connect">
+    <h2>સીધો સંપર્ક અને Instagram</h2>
+    <div class="bottom-actions">
+      <a href="https://www.instagram.com/hrphotoframe?jplx=MXhneWFrdXF1NHQyYQ==" target="_blank" class="personal-insta-btn">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+        </svg>
+        <span>@hrphotoframe</span>
+      </a>
+
+      <a href="tel:+919023994413" class="call-now-btn">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+        </svg>
+        <span>Call Now (કોલ કરો)</span>
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function toggleDocPanel(panelId, isChecked) {
+    const panel = document.getElementById(panelId);
+    if (!panel) return;
+    if (isChecked) {
+      panel.classList.add('active');
+    } else {
+      panel.classList.remove('active');
+    }
+  }
+
+  function calculateAge() {
+    const dobValue = document.getElementById('dob-input').value;
+    const resultEl = document.getElementById('age-result');
+
+    if (!dobValue) {
+      resultEl.textContent = 'કૃપા કરીને જન્મતારીખ પસંદ કરો.';
+      resultEl.classList.add('show');
+      return;
+    }
+
+    const parts = dobValue.split('-');
+    const dob = new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]));
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    if (dob > today) {
+      resultEl.textContent = 'જન્મતારીખ આજની તારીખથી આગળની ન હોઈ શકે.';
+      resultEl.classList.add('show');
+      return;
+    }
+
+    let years = today.getFullYear() - dob.getFullYear();
+    let months = today.getMonth() - dob.getMonth();
+    let days = today.getDate() - dob.getDate();
+
+    if (days < 0) {
+      months -= 1;
+      const prevMonthLastDay = new Date(today.getFullYear(), today.getMonth(), 0).getDate();
+      days += prevMonthLastDay;
+    }
+
+    if (months < 0) {
+      years -= 1;
+      months += 12;
+    }
+
+    resultEl.textContent = `તમારી ઉંમર: ${years} વર્ષ, ${months} મહિના અને ${days} દિવસ`;
+    resultEl.classList.add('show');
+  }
+</script>
+
+</body>
+</html>
