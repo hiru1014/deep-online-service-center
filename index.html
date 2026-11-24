@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Deep Online Service Center</title>
 <style>
+  * {
+    box-sizing: border-box;
+  }
   body { 
     font-family: Arial, sans-serif; 
     margin: 0; 
@@ -12,40 +15,44 @@
     background-color: #e6f7ff;
     color: #00334e;
     padding-bottom: 40px;
+    overflow-x: hidden;
   }
   header { 
     background-color: #87cefa;
     color: #002b49; 
-    padding: 35px 20px; 
+    padding: 30px 15px; 
     text-align: center;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   }
   header h1 { 
-    font-size: 36px; 
+    font-size: 32px; 
     margin: 0; 
-    letter-spacing: 1px;
+    letter-spacing: 0.8px;
     text-transform: uppercase;
+    line-height: 1.25;
   }
   header .tagline { 
-    font-size: 22px; 
+    font-size: 20px; 
     margin-top: 8px; 
     margin-bottom: 18px;
     font-weight: bold;
     color: #004d7a;
   }
   .contact-box {
-    background-color: rgba(255, 255, 255, 0.85);
-    display: inline-block;
-    padding: 15px 25px;
-    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    display: block;
+    margin: 0 auto;
+    padding: 18px 20px;
+    border-radius: 12px;
     border: 1px solid #5bc0de;
-    max-width: 90%;
+    max-width: 560px;
   }
   .contact-box p {
-    margin: 6px 0;
-    font-size: 17px;
+    margin: 7px 0;
+    font-size: 16px;
     color: #002b49;
     font-weight: bold;
+    line-height: 1.45;
   }
   .qr-section {
     margin-top: 15px;
@@ -55,21 +62,23 @@
   .qr-grid {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 14px;
     flex-wrap: wrap;
     margin-top: 10px;
   }
   .qr-card {
     background: #ffffff;
     padding: 12px;
-    border-radius: 8px;
+    border-radius: 10px;
     border: 1px solid #b3e5fc;
-    width: 175px;
+    flex: 1 1 160px;
+    max-width: 190px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.08);
   }
   .qr-card img {
-    width: 140px;
-    height: 140px;
+    width: 136px;
+    height: 136px;
+    max-width: 100%;
     border: 3px solid #f0f9ff;
     border-radius: 6px;
     background: #fff;
@@ -88,64 +97,57 @@
   .btn-group {
     display: flex;
     justify-content: center;
+    align-items: stretch;
     gap: 10px;
     flex-wrap: wrap;
     margin-top: 14px;
   }
-  .whatsapp-btn {
-    display: inline-block;
-    background-color: #25D366;
-    color: #ffffff;
+  .whatsapp-btn, .map-btn, .review-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1 1 150px;
     text-decoration: none;
-    padding: 9px 16px;
-    border-radius: 6px;
+    padding: 11px 14px;
+    border-radius: 8px;
     font-size: 14px;
     font-weight: bold;
+    min-height: 44px;
+    transition: background-color 0.2s, transform 0.15s;
+  }
+  .whatsapp-btn {
+    background-color: #25D366;
+    color: #ffffff;
   }
   .whatsapp-btn:hover {
     background-color: #1ebe5d;
   }
   .map-btn {
-    display: inline-block;
     background-color: #0077b6;
     color: #ffffff;
-    text-decoration: none;
-    padding: 9px 16px;
-    border-radius: 6px;
-    font-size: 14px;
-    font-weight: bold;
   }
   .map-btn:hover {
     background-color: #005f87;
   }
   .review-btn {
-    display: inline-block;
     background-color: #f59e0b;
     color: #ffffff;
-    text-decoration: none;
-    padding: 9px 16px;
-    border-radius: 6px;
-    font-size: 14px;
-    font-weight: bold;
   }
   .review-btn:hover {
     background-color: #d97706;
   }
   .container { 
-    max-width: 700px; 
-    margin: 25px auto; 
-    padding: 0 15px; 
+    max-width: 720px; 
+    margin: 22px auto; 
+    padding: 0 14px; 
   }
   .image-gallery {
-    display: flex;
-    justify-content: space-between;
-    gap: 15px;
-    margin-bottom: 25px;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 22px;
   }
   .image-card {
-    flex: 1;
-    min-width: 190px;
     background: white;
     padding: 8px;
     border-radius: 10px;
@@ -154,24 +156,94 @@
   }
   .image-card img {
     width: 100%;
-    height: 140px;
+    height: 135px;
     object-fit: cover;
     border-radius: 6px;
   }
   .image-card span {
     display: block;
-    margin-top: 6px;
+    margin-top: 8px;
     font-weight: bold;
     font-size: 14px;
     color: #005f87;
   }
-  .services-list, .docs-box, .insta-box, .footer-connect { 
+  .services-list, .docs-box, .doc-check-box, .insta-box, .footer-connect { 
     background: #ffffff; 
-    border-radius: 10px; 
-    padding: 25px 30px; 
+    border-radius: 12px; 
+    padding: 22px 24px; 
     box-shadow: 0 4px 10px rgba(0, 119, 182, 0.1); 
     border-top: 5px solid #5bc0de;
-    margin-bottom: 25px;
+    margin-bottom: 22px;
+  }
+  .doc-check-box {
+    border-top: 5px solid #0284c7;
+  }
+  .doc-check-box h2 {
+    text-align: center;
+    color: #005f87;
+    margin-top: 0;
+    border-bottom: 2px solid #b3e5fc;
+    padding-bottom: 12px;
+    font-size: 22px;
+  }
+  .doc-check-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 16px;
+  }
+  .doc-check-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #f0f9ff;
+    border: 2px solid #bae6fd;
+    border-radius: 10px;
+    padding: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #00334e;
+    transition: all 0.2s ease;
+  }
+  .doc-check-item:has(input:checked) {
+    background: #e0f2fe;
+    border-color: #0284c7;
+    box-shadow: 0 2px 6px rgba(2, 132, 199, 0.18);
+  }
+  .doc-check-item input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #0284c7;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  .doc-check-panel {
+    display: none;
+    margin-top: 14px;
+    background: #f8fafc;
+    border-left: 4px solid #0284c7;
+    border-radius: 8px;
+    padding: 14px 16px;
+  }
+  .doc-check-panel.active {
+    display: block;
+  }
+  .doc-check-panel h4 {
+    margin: 0 0 8px 0;
+    color: #004d7a;
+    font-size: 16.5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .doc-check-panel ul {
+    margin: 0;
+    padding-left: 18px;
+  }
+  .doc-check-panel li {
+    padding: 4px 0;
+    font-size: 15px;
+    color: #0f172a;
   }
   .insta-box {
     border-top: 5px solid #e1306c;
@@ -191,37 +263,39 @@
   .bottom-actions {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
     gap: 12px;
     flex-wrap: wrap;
     margin-top: 12px;
   }
-  .personal-insta-btn {
+  .personal-insta-btn, .call-now-btn, .group-join-btn {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
+    flex: 1 1 180px;
     gap: 8px;
-    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
     color: #ffffff;
     text-decoration: none;
-    padding: 10px 18px;
+    padding: 12px 18px;
     border-radius: 8px;
     font-size: 15px;
     font-weight: bold;
+    min-height: 46px;
+  }
+  .group-join-btn {
+    background-color: #25D366;
+  }
+  .group-join-btn:hover {
+    background-color: #1ebe5d;
+  }
+  .personal-insta-btn {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
   }
   .personal-insta-btn:hover {
     opacity: 0.92;
   }
   .call-now-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
     background-color: #0284c7;
-    color: #ffffff;
-    text-decoration: none;
-    padding: 10px 18px;
-    border-radius: 8px;
-    font-size: 15px;
-    font-weight: bold;
   }
   .call-now-btn:hover {
     background-color: #0369a1;
@@ -232,43 +306,44 @@
     margin-top: 0;
     border-bottom: 2px solid #b3e5fc;
     padding-bottom: 12px;
+    font-size: 22px;
   }
   .insta-box h2 {
     color: #c13584;
     border-bottom-color: #fce7f3;
   }
   .insta-desc {
-    font-size: 16px;
+    font-size: 15.5px;
     color: #334155;
     margin: 10px 0 16px 0;
-    line-height: 1.5;
+    line-height: 1.55;
   }
   .insta-btn {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
     background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
     color: #ffffff;
     text-decoration: none;
-    padding: 11px 22px;
+    padding: 12px 20px;
     border-radius: 8px;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: bold;
+    min-height: 46px;
+    max-width: 100%;
     box-shadow: 0 3px 8px rgba(220, 39, 67, 0.3);
   }
   .insta-btn:hover {
     opacity: 0.92;
   }
   .frame-showcase {
-    display: flex;
-    justify-content: space-between;
-    gap: 15px;
-    margin-top: 22px;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 20px;
   }
   .frame-card {
-    flex: 1;
-    min-width: 170px;
     background: #fff5f7;
     padding: 10px;
     border-radius: 10px;
@@ -286,7 +361,7 @@
     border: 6px solid #1e293b;
     box-shadow: inset 0 0 0 3px #f8fafc, 0 3px 6px rgba(0,0,0,0.15);
     border-radius: 4px;
-    height: 125px;
+    height: 120px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -314,9 +389,10 @@
     margin: 0;
   }
   .services-list li { 
-    padding: 12px 15px; 
+    padding: 12px 10px; 
     border-bottom: 1px solid #e1f5fe; 
-    font-size: 18px;
+    font-size: 16.5px;
+    line-height: 1.4;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -328,7 +404,7 @@
     content: "✔";
     color: #0088cc;
     font-weight: bold;
-    margin-right: 4px;
+    margin-right: 2px;
     flex-shrink: 0;
   }
   .service-logo {
@@ -344,7 +420,8 @@
   }
   .doc-group h3 {
     color: #004d7a;
-    font-size: 19px;
+    font-size: 18px;
+    line-height: 1.4;
     margin-bottom: 10px;
     border-left: 4px solid #0088cc;
     padding-left: 10px;
@@ -358,12 +435,64 @@
     margin: 0;
   }
   .doc-group li {
-    padding: 8px 12px;
+    padding: 8px 10px;
     border-bottom: 1px solid #eef9ff;
-    font-size: 16px;
+    font-size: 15.5px;
+    line-height: 1.5;
   }
   .doc-group li:last-child {
     border-bottom: none;
+  }
+
+  /* Mobile Responsive Adjustments */
+  @media (max-width: 600px) {
+    header {
+      padding: 24px 12px;
+    }
+    header h1 {
+      font-size: 24px;
+    }
+    header .tagline {
+      font-size: 17px;
+    }
+    .contact-box {
+      padding: 14px 14px;
+    }
+    .contact-box p {
+      font-size: 14.5px;
+    }
+    .services-list, .docs-box, .doc-check-box, .insta-box, .footer-connect {
+      padding: 18px 15px;
+    }
+    .doc-check-options {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    .image-gallery {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    .image-card img {
+      height: 165px;
+    }
+    .frame-showcase {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    .btn-group .whatsapp-btn,
+    .btn-group .map-btn,
+    .btn-group .review-btn {
+      flex: 1 1 100%;
+    }
+    .bottom-actions .personal-insta-btn,
+    .bottom-actions .call-now-btn,
+    .bottom-actions .group-join-btn {
+      flex: 1 1 100%;
+    }
+    .services-list li {
+      font-size: 15.5px;
+      padding: 11px 6px;
+    }
   }
 </style>
 </head>
@@ -419,6 +548,105 @@
     </div>
   </div>
 
+  <div class="doc-check-box">
+    <h2>✅ Document Check (તમારા કામના દસ્તાવેજો તપાસો)</h2>
+    <div class="doc-check-options">
+      <label class="doc-check-item" for="chk-pf">
+        <input type="checkbox" id="chk-pf" onchange="toggleDocPanel('panel-pf', this.checked)">
+        <span class="service-logo" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="24" height="24">
+            <circle cx="16" cy="16" r="14.5" fill="#0f4c81"/>
+            <text x="16" y="19" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#ffffff" font-family="Arial, sans-serif">PF</text>
+          </svg>
+        </span>
+        <span>PF</span>
+      </label>
+
+      <label class="doc-check-item" for="chk-ikhedut">
+        <input type="checkbox" id="chk-ikhedut" onchange="toggleDocPanel('panel-ikhedut', this.checked)">
+        <span class="service-logo" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="24" height="24">
+            <circle cx="16" cy="16" r="14.5" fill="#dcfce7" stroke="#15803d" stroke-width="1.6"/>
+            <path d="M16 23V13" stroke="#15803d" stroke-width="2" stroke-linecap="round"/>
+            <path d="M16 15c-3.5 0-6-2.5-6-5.5 3.5 0 6 2.5 6 5.5z" fill="#22c55e" stroke="#15803d" stroke-width="1.2"/>
+            <path d="M16 13c3.5 0 6-2.5 6-5.5-3.5 0-6 2.5-6 5.5z" fill="#16a34a" stroke="#15803d" stroke-width="1.2"/>
+          </svg>
+        </span>
+        <span>i-Khedut</span>
+      </label>
+
+      <label class="doc-check-item" for="chk-bank">
+        <input type="checkbox" id="chk-bank" onchange="toggleDocPanel('panel-bank', this.checked)">
+        <span class="service-logo" aria-hidden="true">
+          <svg viewBox="0 0 28 28" width="24" height="24">
+            <rect x="2" y="5" width="24" height="18" rx="2.5" fill="#ecfeff" stroke="#0284c7" stroke-width="1.6"/>
+            <path d="M2 11h24" stroke="#0284c7" stroke-width="2"/>
+            <rect x="6" y="16" width="8" height="2.5" rx="1" fill="#0369a1"/>
+          </svg>
+        </span>
+        <span>Bank</span>
+      </label>
+    </div>
+
+    <div id="panel-pf" class="doc-check-panel">
+      <h4>
+        <span class="service-logo" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="22" height="22">
+            <circle cx="16" cy="16" r="14.5" fill="#0f4c81"/>
+            <text x="16" y="19" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#ffffff" font-family="Arial, sans-serif">PF</text>
+          </svg>
+        </span>
+        <span>PF (પીએફ) માટે જરૂરી દસ્તાવેજો</span>
+      </h4>
+      <ul>
+        <li>આધાર કાર્ડ</li>
+        <li>બેંક પાસબુક</li>
+        <li>UAN નંબર</li>
+        <li>આધાર કાર્ડ અને બેંક પાસબુક સાથે લિંક મોબાઈલ નંબર (મોબાઈલ સાથે લાવવો જરૂરી છે)</li>
+      </ul>
+    </div>
+
+    <div id="panel-ikhedut" class="doc-check-panel">
+      <h4>
+        <span class="service-logo" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="22" height="22">
+            <circle cx="16" cy="16" r="14.5" fill="#dcfce7" stroke="#15803d" stroke-width="1.6"/>
+            <path d="M16 23V13" stroke="#15803d" stroke-width="2" stroke-linecap="round"/>
+            <path d="M16 15c-3.5 0-6-2.5-6-5.5 3.5 0 6 2.5 6 5.5z" fill="#22c55e" stroke="#15803d" stroke-width="1.2"/>
+            <path d="M16 13c3.5 0 6-2.5 6-5.5-3.5 0-6 2.5-6 5.5z" fill="#16a34a" stroke="#15803d" stroke-width="1.2"/>
+          </svg>
+        </span>
+        <span>i-Khedut (ખેતીવાડી, બાગાયત, પશુપાલન) માટે જરૂરી દસ્તાવેજો</span>
+      </h4>
+      <ul>
+        <li>આધાર કાર્ડ</li>
+        <li>રેશન કાર્ડ</li>
+        <li>બેંક પાસબુક</li>
+        <li>જાતિનો દાખલો</li>
+        <li>૭/૧૨ અને ૮-અ ની નકલ</li>
+        <li>આધાર કાર્ડ સાથે જે મોબાઈલ નંબર લિંક હોય તે મોબાઈલ સાથે લાવવો</li>
+      </ul>
+    </div>
+
+    <div id="panel-bank" class="doc-check-panel">
+      <h4>
+        <span class="service-logo" aria-hidden="true">
+          <svg viewBox="0 0 28 28" width="22" height="22">
+            <rect x="2" y="5" width="24" height="18" rx="2.5" fill="#ecfeff" stroke="#0284c7" stroke-width="1.6"/>
+            <path d="M2 11h24" stroke="#0284c7" stroke-width="2"/>
+            <rect x="6" y="16" width="8" height="2.5" rx="1" fill="#0369a1"/>
+          </svg>
+        </span>
+        <span>ગુજરાત ગ્રામીણ બેંક (Bank) માટે જરૂરી દસ્તાવેજો</span>
+      </h4>
+      <ul>
+        <li>બેંક પાસબુક</li>
+        <li>ખાતું ખોલાવવા માટે: આધાર કાર્ડ, નોમિનીનો આધાર કાર્ડ, પાસપોર્ટ સાઈઝ ફોટો અને આધાર લિંક મોબાઈલ નંબર</li>
+        <li>પાનકાર્ડ હોય તો પાનકાર્ડ અને ત્રણ ફોટા જોશે</li>
+      </ul>
+    </div>
+  </div>
+
   <div class="insta-box">
     <h2>🖼️ કસ્ટમ ફોટો ફ્રેમ ડિઝાઇન (HR Photo Frame)</h2>
     <p class="insta-desc">
@@ -460,143 +688,20 @@
     <ul>
       <li>આધાર કાર્ડથી પૈસા ઉપાડવા (AEPS)</li>
       <li>ગુજરાત ગ્રામીણ બેંકમાં ખાતું ખોલી આપવામાં આવશે</li>
+      <li>
+        <span class="service-logo" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="26" height="26">
+            <circle cx="16" cy="16" r="14.5" fill="#dcfce7" stroke="#15803d" stroke-width="1.6"/>
+            <path d="M16 23V13" stroke="#15803d" stroke-width="2" stroke-linecap="round"/>
+            <path d="M16 15c-3.5 0-6-2.5-6-5.5 3.5 0 6 2.5 6 5.5z" fill="#22c55e" stroke="#15803d" stroke-width="1.2"/>
+            <path d="M16 13c3.5 0 6-2.5 6-5.5-3.5 0-6 2.5-6 5.5z" fill="#16a34a" stroke="#15803d" stroke-width="1.2"/>
+          </svg>
+        </span>
+        <span><strong>આઈ ખેડૂત (iKhedut) પોર્ટલ પર અરજી:</strong> ખેતીવાડી, બાગાયત અને પશુપાલન યોજનાની અરજી કરી આપવામાં આવશે</span>
+      </li>
       <li>લાઈટ બિલ અને ગેસ બિલ ભરવું</li>
       <li>૭/૧૨ અને ૮-અ ની નકલ</li>
       <li>
         <span class="service-logo" aria-hidden="true">
           <svg viewBox="0 0 36 24" width="28" height="20">
-            <rect x="0.5" y="0.5" width="35" height="23" rx="2.5" fill="#e8f1ff" stroke="#1d4ed8" stroke-width="1.2"/>
-            <rect x="3" y="3" width="30" height="4" rx="1" fill="#1d4ed8"/>
-            <text x="18" y="15" text-anchor="middle" font-size="7.5" font-weight="bold" fill="#0f172a" font-family="Arial, sans-serif">PAN</text>
-            <rect x="4" y="18" width="14" height="2" rx="1" fill="#64748b"/>
-            <rect x="20" y="18" width="12" height="2" rx="1" fill="#64748b"/>
-          </svg>
-        </span>
-        <span>પાન કાર્ડના કામ અને આધાર કાર્ડ પ્રિન્ટ</span>
-      </li>
-      <li>
-        <span class="service-logo" aria-hidden="true">
-          <svg viewBox="0 0 32 32" width="26" height="26">
-            <circle cx="16" cy="16" r="14.5" fill="#0f4c81" stroke="#082f49" stroke-width="1.5"/>
-            <circle cx="16" cy="16" r="11" fill="none" stroke="#93c5fd" stroke-width="1" stroke-dasharray="2 1.5"/>
-            <text x="16" y="19" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#ffffff" font-family="Arial, sans-serif">PF</text>
-          </svg>
-        </span>
-        <span>PF (પીએફ) ને લગતા તમામ કામ</span>
-      </li>
-      <li>NOC (એનઓસી) કરી આપવામાં આવશે</li>
-      <li>તમામ પ્રકારના ઓનલાઈન ફોર્મ ભરવા</li>
-      <li>સ્કોલરશિપના ફોર્મ</li>
-      <li>ઈ-શ્રમ કાર્ડ બનાવી આપવામાં આવશે</li>
-      <li>બાયોડેટા (Biodata) બનાવવો</li>
-      <li>
-        <span class="service-logo" aria-hidden="true">
-          <svg viewBox="0 0 32 32" width="26" height="26">
-            <rect x="3" y="4" width="26" height="24" rx="3" fill="#fff1f2" stroke="#e11d48" stroke-width="2"/>
-            <rect x="7" y="8" width="18" height="16" rx="1.5" fill="#ffe4e6" stroke="#fb7185" stroke-width="1.2"/>
-            <circle cx="16" cy="14" r="3" fill="#e11d48"/>
-            <path d="M11 21c1.2-2.2 3-3 5-3s3.8.8 5 3" fill="none" stroke="#e11d48" stroke-width="1.5" stroke-linecap="round"/>
-            <circle cx="26" cy="6" r="3.5" fill="#f59e0b"/>
-          </svg>
-        </span>
-        <span>બર્થડે ફ્રેમ અને મેરેજ ગિફ્ટ ફ્રેમ</span>
-      </li>
-      <li>
-        <span class="service-logo" aria-hidden="true">
-          <svg viewBox="0 0 28 32" width="24" height="28">
-            <rect x="2" y="2" width="24" height="28" rx="2" fill="#f8fafc" stroke="#0284c7" stroke-width="2"/>
-            <circle cx="14" cy="12" r="4.5" fill="#38bdf8" stroke="#0369a1" stroke-width="1.2"/>
-            <path d="M6.5 25c1.2-4 4-6 7.5-6s6.3 2 7.5 6" fill="#7dd3fc" stroke="#0369a1" stroke-width="1.2"/>
-          </svg>
-        </span>
-        <span>પાસપોર્ટ સાઇઝ ફોટો અને લેમિનેશન</span>
-      </li>
-      <li>મોબાઈલ રિચાર્જ</li>
-    </ul>
-  </div>
-
-  <div class="docs-box">
-    <h2>જરૂરી દસ્તાવેજો (Documents Required)</h2>
-
-    <div class="doc-group">
-      <h3>
-        <span class="service-logo" aria-hidden="true">
-          <svg viewBox="0 0 28 28" width="24" height="24">
-            <rect x="2" y="5" width="24" height="18" rx="2.5" fill="#ecfeff" stroke="#0284c7" stroke-width="1.6"/>
-            <path d="M2 11h24" stroke="#0284c7" stroke-width="2"/>
-            <rect x="6" y="16" width="8" height="2.5" rx="1" fill="#0369a1"/>
-          </svg>
-        </span>
-        <span>ગુજરાત ગ્રામીણ બેંકનું ખાતું ખોલવા માટેના દસ્તાવેજો</span>
-      </h3>
-      <ul>
-        <li>• બેંક પાસબુક</li>
-        <li>• <strong>ખાતું ખોલાવવા માટે:</strong> આધાર કાર્ડ, નોમિનીનો આધાર કાર્ડ, પાસપોર્ટ સાઈઝ ફોટો અને આધાર લિંક મોબાઈલ નંબર</li>
-        <li>• પાનકાર્ડ હોય તો પાનકાર્ડ અને <strong>ત્રણ ફોટા</strong> જોશે</li>
-      </ul>
-    </div>
-
-    <div class="doc-group">
-      <h3>
-        <span class="service-logo" aria-hidden="true">
-          <svg viewBox="0 0 32 32" width="24" height="24">
-            <circle cx="16" cy="16" r="14.5" fill="#0f4c81"/>
-            <text x="16" y="19" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#ffffff" font-family="Arial, sans-serif">PF</text>
-          </svg>
-        </span>
-        <span>PF (પીએફ) ના કામ માટે જરૂરી દસ્તાવેજો</span>
-      </h3>
-      <ul>
-        <li>• આધાર કાર્ડ</li>
-        <li>• બેંક પાસબુક</li>
-        <li>• UAN નંબર</li>
-        <li>• આધાર કાર્ડ અને બેંક પાસબુક સાથે લિંક મોબાઈલ નંબર (મોબાઈલ સાથે લાવવો જરૂરી છે)</li>
-      </ul>
-    </div>
-
-    <div class="doc-group">
-      <h3>
-        <span class="service-logo" aria-hidden="true">
-          <svg viewBox="0 0 36 24" width="28" height="20">
-            <rect x="0.5" y="0.5" width="35" height="23" rx="2.5" fill="#e8f1ff" stroke="#1d4ed8" stroke-width="1.2"/>
-            <rect x="3" y="3" width="30" height="4" rx="1" fill="#1d4ed8"/>
-            <text x="18" y="15" text-anchor="middle" font-size="7.5" font-weight="bold" fill="#0f172a" font-family="Arial, sans-serif">PAN</text>
-          </svg>
-        </span>
-        <span>પાન કાર્ડ (PAN Card) કઢાવવા માટે જરૂરી દસ્તાવેજો</span>
-      </h3>
-      <ul>
-        <li>• આધાર કાર્ડ</li>
-        <li>• પાસપોર્ટ સાઈઝ ફોટો</li>
-        <li>• સહી (Signature)</li>
-        <li>• મોબાઈલ નંબર</li>
-        <li>• નીચેનામાંથી <strong>કોઈ પણ એક</strong> દસ્તાવેજ: LC (લિવિંગ સર્ટિફિકેટ), જન્મનો દાખલો (Birth Certificate) અથવા ઈ-શ્રમ કાર્ડ</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="footer-connect">
-    <h2>સીધો સંપર્ક અને Instagram</h2>
-    <div class="bottom-actions">
-      <a href="https://www.instagram.com/hiru_._1014?gwpx=aWFtYWt6OXptMDhn" target="_blank" class="personal-insta-btn">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-        </svg>
-        <span>@hiru_._1014</span>
-      </a>
-
-      <a href="tel:919023994413" class="call-now-btn">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-        </svg>
-        <span>Call Now (કોલ કરો)</span>
-      </a>
-    </div>
-  </div>
-
-</div>
-
-</body>
-</html>
+            <rect x="0.5" y="0.5" width="35" height="23" rx="2.5" fill="#e8f1ff" stroke="
